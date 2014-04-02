@@ -1,8 +1,0 @@
-from random import random
-from math import e
-
-def function_to_integrate(x):
-    return lambda x: (1-x**2)**1.5
-def zero_to_one():
-    x=random()
-    return function_integrate(x)
