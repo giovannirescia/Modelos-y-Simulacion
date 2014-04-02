@@ -1,6 +1,6 @@
 from random import random
 from tabulate import tabulate
-
+from estimation import estimation
 
 def get_min():
     s=0.0
@@ -10,11 +10,6 @@ def get_min():
         n+=1
     return n
 
-def estimation(n,f):
-    estimations=0.0
-    for i in range(0,n):
-        estimations+=f()
-    return estimations/float(n)
 
 N=[10**2,10**3,10**4,10**5,10**6]
 table=[]
