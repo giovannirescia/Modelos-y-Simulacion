@@ -11,7 +11,6 @@ def inv_transf(probs):
     my_sum = 0.0
     while not done:
         my_sum+=probs[i][1]
-        print my_sum
         if u < my_sum:
             x = probs[i][0]
             done = True
