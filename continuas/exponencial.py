@@ -1,10 +1,10 @@
 from random import random
-from math import e, log10
+from math import e, log
 
 
 def exp(l):
     u = random()
-    return log10(u)*(-1.0/l)
+    return log(u)*(-1.0/l)
 
 #Exponencial a partir de Gamma
 
@@ -12,7 +12,7 @@ def exp2(l):
     u1 = random()
     u2 = random()
     u3 = random()
-    t = (-1.0/l)*log10(u1*u2)
+    t = (-1.0/l)*log(u1*u2)
     X = t*u3
     Y = t - X
     print "El resultado es una tupla de dos variables exponenciales"
@@ -25,7 +25,7 @@ def nExp(l, n):
     acc = 1.0
     for i in range(n):
         acc *= random()
-    t = (-1.0/l)*log10(acc)
+    t = (-1.0/l)*log(acc)
     uniforms_list = []
     for i in range(n-1):
         uniforms_list.append(random())

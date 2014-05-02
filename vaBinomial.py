@@ -22,6 +22,9 @@ def binomial(n, p):
         i += 1
     return i
 
+#Optimization
 
+def binomial2(n, p):
+    
 for i in range(25):
     print binomial(25, 0.32)
