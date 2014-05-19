@@ -24,9 +24,18 @@ def procPoisson(l, T, f):
 def funcion_intensidad(t):
     return 3 + 4/(t+1)
 
-s = 0.0
-N = 10**3
-for i in range(N):
-    s+=len(procPoisson(30, 10, funcion_intensidad))
 
-print s/N
+
+def varianza():
+    s = 0.0
+    N = 10**3
+    for i in range(N):
+        s+=len(procPoisson(30, 10, funcion_intensidad))
+    media = s/N
+
+    s2 = 0.0
+    for i in range(N):
+        s2 += (len(procPoisson(30,10,funcion_intensidad)) - media)**2
+    return s2/N
+
+print varianza()

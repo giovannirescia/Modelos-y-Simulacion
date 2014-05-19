@@ -26,9 +26,18 @@ def ej11():
     return x
 
 
-s=0.0
-for i in range(10000):
-    s+=ej11()
+
+def varianza():
+    s = 0.0
+    N = 10**3
+    for i in range(N):
+        s+=ej11()
+    media = s/N
+
+    s2 = 0.0
+    for i in range(N):
+        s2 += (ej11() - media)**2
+    return s2/N
 
 
-print s/10000
+print varianza()
