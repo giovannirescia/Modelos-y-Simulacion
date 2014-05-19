@@ -15,7 +15,6 @@ def simulation():
     # T_r = media tiempo de reparacion de una maquina = 1/8
     # r = estado del sistema, numero de maquinas descompuestas en el tiempo t
     t = 0
-    repairs = []
     broken_machines = 0
     machine_repair_time = float("inf")
     machine_2_repair_time = float("inf")
