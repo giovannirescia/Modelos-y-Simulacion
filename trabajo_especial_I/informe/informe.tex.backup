@@ -1,0 +1,46 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx} % graficos
+\usepackage{setspace}
+\usepackage{xcolor}
+\usepackage{color}
+\usepackage{listings}
+\usepackage{setspace}
+% \usepackage[spanish]{babel}
+% \date{\today}
+% \usepackage{program}
+
+\graphicspath{ {/home/giovanni/famaf/2014/Modelos-y-Simulacion/trabajo_especial_I/informe/figuras/} }
+
+\title{Modelos y Simulaci\'on}
+% \vspace*{lin}
+\author{Giovanni Rescia \\ \\ \large FaMAF}
+\date{21 de Mayo de 2014}
+
+\begin{document}
+% cuerpo del documento
+
+\maketitle
+\pagebreak
+
+% \vspace*{1in}
+\noindent El siguiente gr\'afico podemos observar el estado del sistema actual:
+
+\begin{figure}[hbt]
+% \begin{center}
+% \vspace*{0.10in}
+\noindent\makebox[\textwidth]{\includegraphics[scale=0.4]{figure_1}}
+% \noindent{\includegraphics{figure_1}}
+% \end{center}
+\end{figure}
+% \vspace*{1in}
+\begin{tabular}[t]{|c|c|c|c|c|c|c|c|}
+Este ser'ia el segundo p'arrafo.
+% Esto es s'olo un comentario
+Y aqu'i puedes escribir m'as cosas.
+Mi primer documento en \LaTeX{}.
+\end{tabular}
+
+\end{document}

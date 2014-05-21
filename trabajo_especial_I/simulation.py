@@ -50,7 +50,7 @@ def simulation():
 
     return T
 
-N = [10**i for i in range(2, 5)]
+N = [10**i for i in range(5, 6)]
 
 
 def esperanza(N):
@@ -68,8 +68,8 @@ def varianza(N):
     return varianza/(N-1)
 
 
-for i in N:
-    print "\r\nSimulacion con 2 maquinas de repuesto y un operario\r\n"
-    print "Esperanza:               ", repr(esperanza(i))
-    print "Desviacion Estandar:     ", repr(varianza(i)**0.5)
-    print "\r\n"
+#for i in N:
+#    print "\r\nSimulacion con 2 maquinas de repuesto y un operario\r\n"
+#    print "Esperanza:               ", repr(round(esperanza(i), 3))
+#    print "Desviacion Estandar:     ", repr(round(varianza(i)**0.5, 3))
+#    print "\r\n"

@@ -9,19 +9,18 @@ def exp(l):
 
 def simulation():
     working_machines = 5
-    spare_machines = 2
+    spare_machines = 3
     system_failure = False
     # T_f = media tiempo de falla de una maquina = 1 mes
     # T_r = media tiempo de reparacion de una maquina = 1/8
-    # r = estado del sistema, numero de maquinas descompuestas en el tiempo t
+    # broken_machines = system state, numero de maquinas rotas en el tiempo t
     t = 0
     broken_machines = 0
     machine_repair_time = float("inf")
-    machine_2_repair_time = float("inf")
     l = [exp(1) for i in range(working_machines)]
     l.sort()
     while not system_failure:
-
+        # la primer maquina falla antes que se termine el arreglo de otra
         if l[0] < machine_repair_time:
             t = l[0]
             broken_machines += 1
@@ -39,15 +38,11 @@ def simulation():
             if broken_machines == 1:
                 y = exp(8)
                 machine_repair_time = t + y
-            if broken_machines == 2:
-                y = exp(8)
-                machine2_r_t = y + t
-                machine_repair_time = min(machine_repair_time, machine2_r_t)
-        # no hay fallo antes que una maquina sea reparada
+        # sin fallo antes que la maquina sea reparada
         elif machine_repair_time <= l[0]:
             t = machine_repair_time
             broken_machines -= 1
-            if broken_machines == 1:
+            if broken_machines > 0:
                 y = exp(8)
                 machine_repair_time = t + y
             elif broken_machines == 0:
@@ -74,7 +69,7 @@ def varianza(N):
 
 
 #for i in N:
-#    print "\r\nSimulacion con dos operarios\r\n"
-#    print "Esperanza:             ", repr(round(esperanza(i), 3))
-#    print "Desviacion Estandar:   ", repr(round(varianza(i)**0.5, 3))
+#    print "\r\nSimulacion con 3 maquinas de repuesto y un operario\r\n"
+#    print "Esperanza:               ", repr(round(esperanza(i), 3))
+#    print "Desviacion Estandar:     ", repr(round(varianza(i)**0.5, 3))
 #    print "\r\n"
