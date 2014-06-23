@@ -1,0 +1,176 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\begin{document}
+
+\begin{titlepage}
+\begin{center}
+\vspace*{1.5in}
+\begin{Large}
+\textbf{Modelos y Simulación}
+\vspace{0.5in}
+
+\textbf{Trabajo Especial II}
+
+\vspace{0.3in}
+\textbf{Modelo de Inventario}
+% \begin{figure}[hbt]
+% \noindent\makebox[\textwidth]{\includegraphics[scale=0.5]{gm}}
+% \end{figure}
+
+\vspace{1.5in}
+Giovanni Rescia
+
+\vspace*{0.4in}
+
+FaMAF, UNC
+\vspace*{.13in}
+
+Junio de 2014
+\end{Large}
+\end{center}
+\end{titlepage}
+
+\author{Giovanni Rescia \\ \\ \large FaMAF}
+\date{21 de Mayo de 2014}
+
+\pagebreak
+
+\section{Resumen}
+\vspace{0.4in}
+El presente trabajo se desarrollará en el contexto del modelo de inventario dado en el capítulo 6.5 del
+libro Simulación de Sheldon M. Ross. El objetivo del mismo es analizar la calidad estadística de una lista
+de datos mediante la utilización de diversos test, y no la simulación del mencionado modelo.
+
+Se realizarán test de bondad de ajuste para ver cómo se adaptan distintas distribuciones a los datos listados.
+
+\pagebreak
+
+\section{Introducción}
+\vspace{0.4in}
+
+En particular, trabajaremos con el modelo de inventario bajo las siguiente hipótesis:
+
+\begin{itemize}
+ \item El precio del artículo es \$2.
+ \item Los clientes aparecen en el sistema según un proceso Poisson con razón 20 por hora.
+ \item La cantidad de artículos que cada uno de ellos pide es una variable aleatoria con distribución $\mathcal{G}$(0.4).
+ \item El stock mínimo es $s$=5 y el stock máximo es $S$=50. El stock inicial es 50 y es gratis.
+ \item El costo de comprar $y$ artículos es una función $c(y)$ = $y + \frac{1}{y}$, y se demoran 5 horas en traerlo.
+ \item La tienda paga un costo de mantenimiento del inventario de \$0.10 por cada artículo, por hora cumplida.
+ \item El sistema funciona 8hs diarias, 5 días a la semana, reiniciándose al finalizar la semana.
+\end{itemize}
+
+\subsection{Bases teóricas para la resolución del problema}
+\vspace{0.4in}
+\subsubsection{Test de Kolmogorov-Smirnov}
+El test de Kolmogorov-Smirnov, entre otras cosas, puede ser usado para comparar una muestra bajo la hipótesis que esa
+muestra tiene cierta distribución de probabilidad con ciertos parámetros (la llameremos la hipótesis nula, denotada $H_0$).
+
+El resultado de tal pruba es un valor (llamado p-valor), que: o bien nos permite refutar $H_0$, o bien nos dice que
+no hay evidencia suficiente para rechazarla.
+
+
+\subsubsection{Test $\chi^2$}
+Va a ser usado con el mismo propósito que el test de Kolmogorov-Smirnov, solo que para distribuciones discretas (en contraste
+con Kolmogorov-Smirnov que es para distribuciones continuas).
+
+\pagebreak
+
+\section{Independencia de los datos}
+
+
+A tal fin de observar cuán independientes son los datos muestreados, nos valeremos de un $scatter \ diagram$.
+Mientras más dispersos se observen los datos en el gráfico, más independientes serán unos de otros.
+
+
+\begin{figure}[hbt]
+\noindent\makebox[\textwidth]{\includegraphics[scale=0.35]{scatter}}
+\end{figure}
+
+Como se puede apreciar en el gráfico, los puntos están dispersos, lo que indica independencia.
+Otra observación que se puede hacer que es que hay alta concentración de puntos en 366, por lo que la media
+se encuentra cerca de 366.
+
+\pagebreak
+
+\section{Muestras de Variables Aleatorias Geométricas}
+
+A continuación histogramas con 100, 1000 y 10000 variables aleatorias $\sim \mathcal{G}$(0.4).
+
+
+\begin{figure}[hbt]
+\noindent\makebox[\textwidth]{\includegraphics[scale=0.3]{100geo}}
+\end{figure}
+
+
+\begin{figure}[hbt]
+\noindent\makebox[\textwidth]{\includegraphics[scale=0.3]{1000geo}}
+\end{figure}
+
+\pagebreak
+
+\begin{figure}[hbt]
+\noindent\makebox[\textwidth]{\includegraphics[scale=0.27]{10000geo}}
+\end{figure}
+
+
+\begin{figure}[hbt]
+\noindent\makebox[\textwidth]{\includegraphics[scale=0.34]{teoricageo}}
+\end{figure}
+
+
+En vista al último histograma, podemos observar que a medida que la muestra de variables aleatorias
+crece, se va acercando al límite teórico de una variable aleatoria $\mathcal{G}$(0.4).
+Por lo que podríamos estar casi seguros (si no contáramos con la hipótesis que la muestra proviene
+efectivamente de variables aleatorias $\mathcal{G}$(0.4)) que las observaciones tienen
+dicha distribución.
+
+\pagebreak
+
+\section*{Test $\chi^2$}
+
+\vspace{0.4in}
+
+Realizaremos una estimación del p-valor a partir de la hipótesis de que la muestra está distribuida
+con variable aleatorias $\mathcal{G}$(0.4).
+
+Para esto, plantearemos dos hipótesis:
+
+\begin{itemize}
+ \item $H_0$: la muestra está distribuida con variable aleatorias $\mathcal{G}$(0.4).
+ \item $H_a$: la muestra no está distribuida con variables aleatorias $\mathcal{G}$(0.4).
+\end{itemize}
+
+Definiremos el estadístico $T$ como:
+
+\[T = \sum\limits_{i=1}^n \frac{(N_i - n p_i)^2}{n p_i}\]
+
+donde:
+
+\begin{itemize}
+ \item $n$ es el tamaño de la muestra
+ \item $N_i$ es la frecuencia observada sobre el valor $i$-ésimo.
+ \item $p_i$ es la probabilidad de un valor que sea igual a $i$ (es decir, $p_i = P(X=i) = 0.4*(1 - 0.4)^i$
+\end{itemize}
+
+Entonces, tenemos que
+
+\[p-valor \approx P\{\chi^2_{k-1} \geq t\}\]
+
+Por lo tanto, podemos calcular $j$ estadísticos $T_1,...,T_j$
+y aproximar
+
+\[\frac{\#\{i | T_i \geq t\}}{j} \approx P\{T \geq t\}\]
+
+Se han observado los siguientes valores:
+
+\begin{itemize}
+ \item $n$ = 100
+ \subitem $t_obs$ = 10.9768
+ \subitem $p-valor$ = 0.877
+\end{itemize}
+
+
+
+\end{document}
