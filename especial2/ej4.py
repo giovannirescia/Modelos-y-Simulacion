@@ -4,17 +4,12 @@ import matplotlib.pyplot as mpl
 import numpy as np
 from scipy import stats
 from ej3 import *
+import matplotlib.pylab as mlab
+
+
 ganancias = open('ganancia-ins-500.dat')
 
 ganancias = (map(float,(ganancias.read().splitlines())))
-
-#n, bins, patches = mpl.hist(ganancias,75,normed=1 ,facecolor='blue',alpha=0.4, )
-#mpl.axvline(np.mean(ganancias), color='blue', linestyle='dashed', linewidth=2, label='Muestra con 100 variables aleatorias geometricas con parametro 0.4')
-
-#mpl.show()
-mu, sigma = normal(ganancias)
-print mu, sigma
-#stats.norm.cdf(loc=
 
 def cumulative(x):
     return stats.norm.cdf(x)
@@ -43,7 +38,7 @@ d = est_d(Y)
 
 r = 1000
 hits = 0
-print d
+#print d
 for i in range(r):
 
 

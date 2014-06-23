@@ -6,7 +6,13 @@ from scipy import stats
 ganancias = open('ganancia-ins-500.dat')
 
 ganancias = (map(float,(ganancias.read().splitlines())))
+"""
 
+OBTENER EL ESTADISTICO d Y EL p-valor PARA LA MUESTRA
+AJUSTANDO A LAS DISTRIBUCIONES: NORMAL, LOGNORMAL Y
+GAMMA.
+
+"""
 def normal(data):
     x = sum(data)/len(data)
     sigma2 = 0
@@ -16,7 +22,7 @@ def normal(data):
 
 mu, sigma2 = normal(ganancias)
 sigma = sigma2**0.5
-
+print "KS NORMAL"
 print stats.kstest(ganancias, 'norm',args=(mu,sigma))
 
 
@@ -30,9 +36,11 @@ def lognormal(data):
     return (x,sigma2)
 
 mu, sigma2 = lognormal(ganancias)
+print mu, sigma2
 sigma = sigma2**0.5
 
 data = map(log, ganancias)
+print "KS LOGNORMAL"
 print stats.kstest(data, 'norm',args=( mu,sigma))
 
 
@@ -52,5 +60,6 @@ def gamma(data):
     return (alpha , l)
 
 alp, lam = gamma(ganancias)
-
+print alp, lam
+print "KS GAMMA"
 print stats.kstest(ganancias, 'gamma', args=(alp,0,1 /lam))

@@ -42,7 +42,7 @@ plt.hist(g1, 35,normed=1 , facecolor='b',alpha=0.7,width=0.2)
 
 plt.title('Histograma con 100 variables Aleatorias Geometricas de parametro 0.4')
 
-#plt.axvline(np.mean(g3), color='orange', linestyle='dashed', linewidth=2)
+plt.axvline(np.mean(g1), color='blue', linestyle='dashed', linewidth=2)
 #plt.hist(x, **common_params)
 #plt.legend()
 plt.show()
